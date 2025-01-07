@@ -1,13 +1,9 @@
 
-
-
 import java.util.*;
 
 public class tUf {
     public static int singleNonDuplicate(ArrayList<Integer> arr) {
-        int n = arr.size(); // Size of the array.
-
-        // Edge cases:
+        int n = arr.size();
         if (n == 1)
             return arr.get(0);
         if (!arr.get(0).equals(arr.get(1)))
@@ -19,25 +15,23 @@ public class tUf {
         while (low <= high) {
             int mid = (low + high) / 2;
 
-            // If arr[mid] is the single element:
             if (!arr.get(mid).equals(arr.get(mid + 1)) && !arr.get(mid).equals(arr.get(mid - 1))) {
                 return arr.get(mid);
             }
 
-            // We are in the left:
             if ((mid % 2 == 1 && arr.get(mid).equals(arr.get(mid - 1)))
                     || (mid % 2 == 0 && arr.get(mid).equals(arr.get(mid + 1)))) {
-                // Eliminate the left half:
+       
                 low = mid + 1;
             }
-            // We are in the right:
+        
             else {
-                // Eliminate the right half:
+     
                 high = mid - 1;
             }
         }
 
-        // Dummy return statement:
+     
         return -1;
     }
 
@@ -47,4 +41,3 @@ public class tUf {
         System.out.println("The single element is: " + ans);
     }
 }
-
